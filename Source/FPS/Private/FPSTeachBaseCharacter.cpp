@@ -398,7 +398,10 @@ void AFPSTeachBaseCharacter::ClientDeathMatchDeath_Implementation()
 	{
 		CurrentClientWeapon->Destroy();
 	}
-
+	if(FPArmsMesh)
+	{
+		FPArmsMesh->SetVisibility(false);
+	}
 }
 
 void AFPSTeachBaseCharacter::ClientEndAiming_Implementation()
@@ -1417,5 +1420,7 @@ void AFPSTeachBaseCharacter::DeathMatchDeath(AActor* DamageActor)
 	{
 		MultiFPSPlayerController->DeathMatchDeath(DamageActor);
 	}
+
+	TPBodysDeath();
 }
 #pragma endregion

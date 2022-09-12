@@ -35,6 +35,9 @@ private:
 	UPROPERTY(Category=Character, BlueprintReadOnly, meta=(AllowPrivateAccess = "true"))
 	UAnimInstance* ServerBodysAnimBP;
 
+	UPROPERTY(EditAnywhere)
+	UAnimMontage* ServerTPBodysDeathAnimMontage;
+
 	UPROPERTY(BlueprintReadOnly, meta=(AllowPrivateAccess = "true"))
 	AMultiFPSPlayerController* FPSPlayerController;
 
@@ -167,7 +170,7 @@ public:
 	UPROPERTY(Replicated)
 	bool IsFiring;
 
-	UPROPERTY(Replicated)
+	UPROPERTY(Replicated, BlueprintReadOnly)
 	bool IsReloading;
 
 	UFUNCTION()
@@ -184,6 +187,8 @@ public:
 
 	void DeathMatchDeath(AActor* DamageActor);
 
+	UFUNCTION(BlueprintImplementableEvent)
+	void TPBodysDeath();
 #pragma endregion 
 
 	
